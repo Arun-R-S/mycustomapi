@@ -1,0 +1,9 @@
+{
+    "domain": "mycustomapi",
+    "name": "My Custom API",
+    "version": "1.0.0",
+    "documentation": "",
+    "dependencies": [],
+    "codeowners": [],
+    "requirements": []
+}
