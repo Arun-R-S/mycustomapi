@@ -1,18 +1,22 @@
 import aiohttp
-from homeassistant.components.http import HomeAssistantView
+#from homeassistant.components.http import HomeAssistantView
+from aiohttp import web
 
-class MyCustomAPI(HomeAssistantView):
-    url = "/mycustomapi/tasmota"
-    name = "mycustomapi:tasmota"
-    requires_auth = False  # Set to True if you want authentication
+class MyCustomAPI:
+#class MyCustomAPI(HomeAssistantView):
+    #url = "/customapi/tasmota"
+    #name = "customapi:tasmota"
+    #requires_auth = False  # Set to True if you want authentication
 
     async def get(self, request):
         ip = request.query.get("ip")
         pulsetime = request.query.get("pulsetime")
         power = request.query.get("power")
+        admin = request.query.get("admin")
+        username = request.query.get("username")
 
         if not ip or (not pulsetime and not power):
-            return self.json({
+            return web.json_response({
                 "success": False,
                 "error": "Missing 'ip' and either 'pulsetime' or 'power' query parameter"
             }, status_code=400)
@@ -29,16 +33,16 @@ class MyCustomAPI(HomeAssistantView):
                 async with session.get(url, timeout=5) as resp:
                     data = await resp.json()
 
-            return self.json({
+            return web.json_response({
                 "success": True,
-                "ip": ip,
                 "cmd": cmd,
                 "data": data
             })
 
         except Exception as e:
-            return self.json({
+            return web.json_response({
                 "success": False,
+                "url":url,
                 "info":"Check the script!!",
                 "error": str(e)
-            }, status_code=500)
+            }, status=500)
