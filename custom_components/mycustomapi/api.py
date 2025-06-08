@@ -10,6 +10,8 @@ class MyCustomAPI(HomeAssistantView):
         ip = request.query.get("ip")
         pulsetime = request.query.get("pulsetime")
         power = request.query.get("power")
+        thisUser = request.query.get("user")
+        thisPassword = request.query.get("password")
 
         if not ip or (not pulsetime and not power):
             return self.json({
@@ -22,8 +24,12 @@ class MyCustomAPI(HomeAssistantView):
                 cmd = f"PulseTime{pulsetime}"
             elif power:
                 cmd = f"Power{power}"
+            # Build base URL
+            base_url = f"http://{ip}/cm?cmnd={cmd}"
 
-            url = f"http://{ip}/cm?cmnd={cmd}"
+            # Append auth params if provided
+            if thisUser and thisPassword:
+            url = base_url + f"&user={thisUser}&password={thisPassword}"
 
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, timeout=5) as resp:
