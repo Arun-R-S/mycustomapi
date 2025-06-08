@@ -39,5 +39,6 @@ class MyCustomAPI(HomeAssistantView):
         except Exception as e:
             return self.json({
                 "success": False,
+                "info":"Check the script!!"
                 "error": str(e)
             }, status_code=500)
