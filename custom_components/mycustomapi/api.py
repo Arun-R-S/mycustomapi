@@ -29,7 +29,7 @@ class MyCustomAPI(HomeAssistantView):
 
             # Append auth params if provided
             if thisUser and thisPassword:
-            url = base_url + f"&user={thisUser}&password={thisPassword}"
+                url = base_url + f"&user={thisUser}&password={thisPassword}"
 
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, timeout=5) as resp:
