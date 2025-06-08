@@ -25,11 +25,11 @@ class MyCustomAPI(HomeAssistantView):
             elif power:
                 cmd = f"Power{power}"
             # Build base URL
-            base_url = f"http://{ip}/cm?cmnd={cmd}"
+            url = f"http://{ip}/cm?cmnd={cmd}"
 
             # Append auth params if provided
             if thisUser and thisPassword:
-                url = base_url + f"&user={thisUser}&password={thisPassword}"
+                url = url + f"&user={thisUser}&password={thisPassword}"
 
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, timeout=5) as resp:
