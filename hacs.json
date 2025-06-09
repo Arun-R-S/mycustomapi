@@ -1,0 +1,7 @@
+{
+  "name": "My Custom API",
+  "homeassistant": "2023.0.0",
+  "domains": ["mycustomapi"],
+  "country": "any",
+  "iot_class": "local_polling"
+}
