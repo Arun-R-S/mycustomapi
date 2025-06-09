@@ -2,8 +2,10 @@
     "domain": "mycustomapi",
     "name": "My Custom API",
     "version": "1.1.2",
-    "documentation": "",
-    "dependencies": [],
-    "codeowners": [],
-    "requirements": []
+    "documentation": "https://github.com/Arun-R-S/mycustomapi",
+    "dependencies": ["http"],
+    "codeowners": ["@Arun-R-S"],
+    "requirements": [],
+    "iot_class": "local_polling",
+    "config_flow": true
 }
