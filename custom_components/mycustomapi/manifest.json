@@ -1,7 +1,7 @@
 {
     "domain": "mycustomapi",
     "name": "My Custom API",
-    "version": "1.2.1",
+    "version": "1.2.3",
     "documentation": "https://github.com/Arun-R-S/mycustomapi",
     "dependencies": ["http"],
     "codeowners": ["@Arun-R-S"],
