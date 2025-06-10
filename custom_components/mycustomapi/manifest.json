@@ -1,12 +1,11 @@
 {
     "domain": "mycustomapi",
     "name": "My Custom API",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "documentation": "https://github.com/Arun-R-S/mycustomapi",
     "dependencies": ["http"],
     "codeowners": ["@Arun-R-S"],
     "requirements": [],
     "iot_class": "local_polling",
-    "config_flow": true,
-    "brand":"termux_api"
+    "config_flow": true
 }
